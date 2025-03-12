@@ -1,4 +1,4 @@
 # Ohjelmistotekniikan harjoitustyö
 
-**Suunnitelma*
+**Suunnitelma**
 Alustava idea on tehdä *peli*
