@@ -8,4 +8,4 @@ Laskarit: https://github.com/juhok00/ot-harjoitustyo/tree/main/laskarit
 
 ## Dokumentaatio
 
-- [Työaikakirjanpito] (./dokumentaatio/tuntikirjanpito.md)
+- [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
