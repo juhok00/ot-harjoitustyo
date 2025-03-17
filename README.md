@@ -4,7 +4,8 @@
 
 Alustava idea on tehdä *peli*
 
-Laskarit: https://github.com/juhok00/ot-harjoitustyo/tree/main/laskarit
+## Laskarit
+Laskarit löytyy [täältä](./laskarit)
 
 ## Dokumentaatio
 
