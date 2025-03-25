@@ -10,3 +10,4 @@ Laskarit löytyy [täältä](./laskarit)
 ## Dokumentaatio
 
 - [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
+- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
