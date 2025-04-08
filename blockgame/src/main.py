@@ -1,5 +1,6 @@
 import pygame
 from views.start_view import StartView
+from views.game_view import GameView
 
 
 class Display:
@@ -7,7 +8,12 @@ class Display:
         pygame.init()
         self.screen = pygame.display.set_mode((width,height))
         pygame.display.set_caption(title)
-        self.start_view = StartView(self.screen)
+        
+        self.start_view = StartView(self.screen, self.switch_game_view)
+        self.game_view = GameView(self.screen)
+        
+        self.current_view = self.start_view
+        
 
     def run(self):
         running = True
@@ -16,13 +22,17 @@ class Display:
                 if event.type == pygame.QUIT:
                     running = False
                     
-                self.start_view.handle_event(event)
+                self.current_view.handle_event(event)
 
 
-            self.start_view.draw()
+            self.current_view.draw()
             pygame.display.flip()
 
         pygame.quit()
+        
+    def switch_game_view(self, player_name):
+        self.game_view.player_name = player_name
+        self.current_view = self.game_view
 
 
 

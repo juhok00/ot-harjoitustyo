@@ -19,6 +19,7 @@ packages = [{ include = "src" }]
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.8.0"
 pytest = "^8.3.5"
+pylint = "^3.3.6"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

@@ -2,10 +2,11 @@ import pygame
 
 
 class StartView:
-    def __init__(self, screen):
+    def __init__(self, screen, game_view):
         
         self.screen = screen
         self.display_size = screen.get_size()
+        self.game_view = game_view
         
 
         self.background_color = (0,0,0)
@@ -49,6 +50,12 @@ class StartView:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_BACKSPACE:
                 self.input_text = self.input_text[:-1]
+            elif event.key == pygame.K_RETURN:
+                if self.input_text.strip():
+                    self.game_view(self.input_text)
+                
+                
+                
             elif len(self.input_text) < 10:
                 self.input_text += event.unicode
                 
