@@ -4,8 +4,6 @@
 
 Alustava idea on tehdä *peli*
 
-## Laskarit
-Laskarit löytyy [täältä](./laskarit)
 
 ## Dokumentaatio
 
