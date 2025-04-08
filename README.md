@@ -11,7 +11,8 @@ Laskarit löytyy [täältä](./laskarit)
 
 - [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
-
+- [Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
+- [Changelog](./dokumentaatio/changelog.md)
 
 ## Asentaminen
 
@@ -39,6 +40,13 @@ Komento testikattavuusraportin luonnille:
 
 ```
 poetry run invoke coverage-report
+```
+
+
+Komento pylint-tarkistukselle:
+
+```
+poetry run invoke lint
 ```
 
 
