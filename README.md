@@ -9,10 +9,10 @@ Laskarit löytyy [täältä](./laskarit)
 
 ## Dokumentaatio
 
-- [Työaikakirjanpito](./dokumentaatio/tuntikirjanpito.md)
-- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
-- [Arkkitehtuurikuvaus](./dokumentaatio/arkkitehtuuri.md)
-- [Changelog](./dokumentaatio/changelog.md)
+- [Työaikakirjanpito](./blockgame/dokumentaatio/tuntikirjanpito.md)
+- [Vaatimusmäärittely](./blockgame/dokumentaatio/vaatimusmaarittely.md)
+- [Arkkitehtuurikuvaus](./blockgame/dokumentaatio/arkkitehtuuri.md)
+- [Changelog](./blockgame/dokumentaatio/changelog.md)
 
 ## Asentaminen
 
