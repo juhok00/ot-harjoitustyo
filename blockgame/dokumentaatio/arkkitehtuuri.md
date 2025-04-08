@@ -1,1 +1,1 @@
-![Pakkauskaavio](blockdrop_pakkauskaavia.jpg)
+![Pakkauskaavio](blockdrop_pakkauskaavio.jpg)
