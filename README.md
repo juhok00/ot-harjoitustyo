@@ -11,6 +11,7 @@ Alustava idea on tehdä *peli*
 - [Vaatimusmäärittely](./blockgame/dokumentaatio/vaatimusmaarittely.md)
 - [Arkkitehtuurikuvaus](./blockgame/dokumentaatio/arkkitehtuuri.md)
 - [Changelog](./blockgame/dokumentaatio/changelog.md)
+- [Release 1](https://github.com/juhok00/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Asentaminen
 
