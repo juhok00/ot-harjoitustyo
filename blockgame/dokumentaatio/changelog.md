@@ -16,3 +16,16 @@
 - Käyttäjä voi hiirellä raahata palikkaa eri puolille näyttöä.
 
 - Invoke-komento pylintille
+
+
+## VIIKKO 5
+
+- Käyttäjän asettamat palikat lukittuvat ruudukkoon.
+
+- Käyttäjälle ilmestyy uusi palikka, kun aikaisempi on onnistuneesti asetettu ruudukkoon.
+
+- Käyttäjälle ilmestyviä muotoja lisätty.
+
+- Testien edistämistä ja refaktorointia pylintin tulosten parantamiseksi.
+
+- Sekvenssikaavio palikoiden asettamisesta peliruudukkoon.

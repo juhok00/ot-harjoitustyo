@@ -14,8 +14,10 @@ Häviämisen jälkeen tulee esiin näkymä, jossa on tulostaulukko sekä napit, 
 ## Toiminnallisuudet
 
 - Käyttäjä kirjoittaa oman nimensä aloitusnäkymässä, jota käytetään tulostaulukossa. TEHTY
-- Käyttäjä voi raahata satunnaisesti valitun palikan hiirellä taulukkoon. TEHTY OSITTAIN (PALIKKA EI LUKITU RUUDUKKOON)
-  - Jos palikka ei mahdu taulukkoon, on peli hävitty.
+
+- Käyttäjä voi raahata satunnaisesti valitun palikan hiirellä taulukkoon. TEHTY
+
+- Jos palikka ei mahdu taulukkoon, on peli hävitty.
 
 - Käyttäjä voi kokeilla uudestaan tai vaihtaa pelaajaa (uusi nimi) hävittyään pelin.
   
