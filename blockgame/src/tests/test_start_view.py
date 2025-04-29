@@ -61,6 +61,6 @@ class TestStartView(unittest.TestCase):
         view.draw()
 
 
-        self.assertEqual(view.background_color, (0,0,0))
-        self.assertEqual(view.text_color, (255,255,255))
-        self.assertEqual(view.button_color,(255,255,255))
+        self.assertEqual(view.ui["colors"]["background_color"], (0,0,0))
+        self.assertEqual(view.ui["colors"]["text_color"], (255,255,255))
+        self.assertEqual(view.ui["colors"]["button_color"],(255,255,255))

@@ -29,3 +29,16 @@
 - Testien edistämistä ja refaktorointia pylintin tulosten parantamiseksi.
 
 - Sekvenssikaavio palikoiden asettamisesta peliruudukkoon.
+
+
+## VIIKKO 6
+
+- Käyttäjän täyttäessä rivin tai sarakkeen se tyhjenee.
+
+- Käyttäjän pistemäärä nousee rivin täyttäessä.
+
+- Docstring dokumentointia.
+
+- Refaktorointia.
+
+- Alustava käyttöohje.

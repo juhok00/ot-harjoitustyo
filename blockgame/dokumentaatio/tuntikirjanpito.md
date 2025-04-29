@@ -11,4 +11,7 @@
 | 8.4  | 4.0  | Lisäyksiä pelinäkymään: palikan luonti ja toiminnallisuus |
 | 14.4 | 5.0 | Pylint korjailuja ja sovelluksen edistämistä: palikat jää ruudukkoon ja uusi tulee |
 | 15.4 | 5.0 | Uusia muotoja, testejä, sekvenssikaavio, epäonnistunutta refaktorointia |
-| yht   | 33.0  |      | 
+| 26.4 | 5.0 | Rivien/sarakkeiden tyhjeneminen, pistetilanteen päivitys |
+| 27.4 | 3.0 | Testejä ja refaktorointia |
+| 28.4 | 5.0 | Docstring, refaktorointi ja alustava käyttöohje. |
+| yht   | 46.0  |      | 

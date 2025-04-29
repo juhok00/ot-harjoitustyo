@@ -47,3 +47,35 @@ class TestGameView(unittest.TestCase):
 
         self.assertTrue(view.dragging)
         self.assertIsNotNone(view.drag_offset)
+
+
+
+    def test_that_filling_line_removes_it_and_increases_score(self):
+        view = GameView(self.display)
+
+        view.placed_blocks = []
+
+        for col in range(view.grid_size):
+            view.placed_blocks.append(([(0,0)], col, 0))
+
+        self.assertEqual(view.score_value, 0)
+        view.clear_full_row_or_column()
+        self.assertEqual(view.score_value, 1)
+        self.assertEqual(len(view.placed_blocks), 0)
+
+    def test_if_no_full_line(self):
+        view = GameView(self.display)
+        view.clear_full_row_or_column()
+        self.assertEqual(view.score_value, 0)
+
+    def test_that_rest_of_the_blocks_stay(self):
+        view = GameView(self.display)
+        view.placed_blocks = [([(0,0)], 0, 1)]
+
+        for col in range(view.grid_size):
+            view.placed_blocks.append(([(0,0)], col, 0))
+
+        view.clear_full_row_or_column()
+
+        self.assertEqual(len(view.placed_blocks), 1)
+        self.assertEqual(view.score_value, 1)
