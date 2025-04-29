@@ -1,5 +1,23 @@
+# Arkkitehtuurikuvaus
+
+## Rakenne
+
+
+
 ![Pakkauskaavio](kuvat/blockdrop_pakkauskaavio.jpg)
 
+
+
+## Käyttöliittymä
+
+Käyttöliittymä koostuu toistaiseksi kahdesta näkymästä:
+
+-Aloitusnäkymä, jossa käyttäjä syöttää nimensä.
+
+-Pelinäkymä, jossa peliä pelataan.
+
+
+Molemmat näkymät ovat omissa luokissa ja omissa tiedostoissa "views" kansion sisällä. Käyttöliittymä on selkeästi eriytetty sovelluslogiikasta omilla metodeillaan.
 
 
 ## Toiminnallisuuksia

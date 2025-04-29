@@ -14,4 +14,5 @@
 | 26.4 | 5.0 | Rivien/sarakkeiden tyhjeneminen, pistetilanteen päivitys |
 | 27.4 | 3.0 | Testejä ja refaktorointia |
 | 28.4 | 5.0 | Docstring, refaktorointi ja alustava käyttöohje. |
-| yht   | 46.0  |      | 
+| 29.4 | 1.0 | Arkkitehtuurikuvauksen luontia. |
+| yht   | 47.0  |      | 
