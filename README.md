@@ -1,6 +1,4 @@
-# Ohjelmistotekniikan harjoitustyö
-
-**BlockDrop**
+# BlockDrop
 
 *BlockDrop* on peli, jossa tavoitteena on täyttää vaaka ja pystyrivejä ruudukossa. Jokaisesta täyteen saadusta rivistä saa pisteen. Peli päättyy, kun uusia palikoita ei enää mahdu ruudukkoon.
 
