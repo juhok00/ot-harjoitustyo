@@ -15,4 +15,9 @@
 | 27.4 | 3.0 | Testejä ja refaktorointia |
 | 28.4 | 5.0 | Docstring, refaktorointi ja alustava käyttöohje. |
 | 29.4 | 1.0 | Arkkitehtuurikuvauksen luontia. |
-| yht   | 47.0  |      | 
+| 3.5 | 2.0 | Pelin häviämisen käsittely lisätty ja parannuksia tehty. |
+| 4.5 | 3.0 | Pistetaulukon luonti ja refaktorointia. |
+| 9.5 | 2.0 | Pistetaulukkologiikan jatkoa ja testejä |
+| 10.5 | 2.0 | Testejä |
+| 11.5 | 3.0 | Testit ja dokumentaatioiden parantelua. |
+| yht   | 59.0  |      | 

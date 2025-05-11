@@ -22,9 +22,8 @@ class StartView:
 
         self.ui = {
             "colors": {
-                "background_color": (0,0,0),
-                "text_color": (255,255,255),
-                "button_color": (255,255,255),
+                "black_color": (0,0,0),
+                "white_color": (255,255,255),
             },
 
             "fonts": {
@@ -32,18 +31,17 @@ class StartView:
                 "general_font": pygame.font.Font(None, 30),
                 "input_font": pygame.font.Font(None, 40),
             }
-
         }
 
         self.title_text = self.ui["fonts"]["title_font"].render(
-            "BLOCKDROP", True, self.ui["colors"]["text_color"]
+            "BLOCKDROP", True, self.ui["colors"]["white_color"]
         )
         self.title_position = (self.display_size[0]//2 - self.title_text.get_width()//2, 300)
 
 
 
         self.name_text = self.ui["fonts"]["general_font"].render(
-            "ENTER NAME", True, self.ui["colors"]["text_color"]
+            "ENTER NAME", True, self.ui["colors"]["white_color"]
         )
         self.name_position = (self.display_size[0]//2 - self.name_text.get_width()//2, 400)
 
@@ -58,14 +56,14 @@ class StartView:
         """Piirtää näytön aloitusnäkymän.
         """
 
-        self.screen.fill(self.ui["colors"]["background_color"])
+        self.screen.fill(self.ui["colors"]["black_color"])
         self.screen.blit(self.title_text, self.title_position)
         self.screen.blit(self.name_text, self.name_position)
 
 
-        pygame.draw.rect(self.screen, self.ui["colors"]["text_color"], self.input_rect, 2)
+        pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], self.input_rect, 2)
         text_surface = self.ui["fonts"]["input_font"].render(
-            self.input_text, True, self.ui["colors"]["text_color"]
+            self.input_text, True, self.ui["colors"]["white_color"]
         )
 
         text_x = self.input_rect.x + (self.input_rect.w - text_surface.get_width()) // 2
@@ -89,7 +87,7 @@ class StartView:
                 self.input_text = self.input_text[:-1]
             elif event.key == pygame.K_RETURN:
                 if self.input_text.strip():
-                    self.game_view(self.input_text)
+                    self.game_view(self.input_text.strip())
 
 
             elif len(self.input_text) < 10:

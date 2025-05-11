@@ -15,7 +15,7 @@ class GameView:
     """
 
 
-    def __init__(self, screen):
+    def __init__(self, screen, display):
         """Konstruktori GameView-luokalle.
         Luo pelinäkymän ja alustaa tarvittavat muuttujat.
 
@@ -24,27 +24,36 @@ class GameView:
         """
 
         self.screen = screen
+        self.display = display
         self.display_size = screen.get_size()
 
-        self.black_color = (0,0,0)
-        self.white_color = (255,255,255)
+        self.ui = {
+            "colors": {
+                "black_color": (0,0,0),
+                "white_color": (255,255,255),
+            },
 
-        self.general_font = pygame.font.Font(None, 30)
-        self.input_font = pygame.font.Font(None, 40)
+            "fonts": {
+                "title_font": pygame.font.Font(None, 60),
+                "general_font": pygame.font.Font(None, 30),
+                "input_font": pygame.font.Font(None, 40),
+            }
+        }
 
+        self.player_name = ""
         self.placed_blocks = []
         self.grid_size = 9
         self.grid = [[0 for _ in range(self.grid_size)] for _ in range(self.grid_size)]
+
+        self.score_value = 0
 
         self.text_surface = None
         self.dragging = False
         self.block_x = 0
         self.block_y = 0
         self.drag_offset = None
-
-
-
-
+        self.block_can_fit = False
+        self.game_over = False
 
 
         self.init_score_area()
@@ -59,7 +68,9 @@ class GameView:
         """Konstruktori, joka luo alueen pistetilanteelle.
         """
 
-        self.score_text = self.general_font.render("SCORE", True, self.white_color)
+        self.score_text = self.ui["fonts"]["general_font"].render(
+            "SCORE", True, self.ui["colors"]["white_color"])
+
 
         self.score_center_x = self.display_size[0]
 
@@ -67,7 +78,8 @@ class GameView:
         self.score_rect = pygame.Rect(self.score_center_x - 100, 50, 90, 40)
 
         self.score_value = 0
-        self.text_surface = self.input_font.render(str(self.score_value), True, self.white_color)
+        self.text_surface = self.ui["fonts"]["input_font"].render(
+            str(self.score_value), True, self.ui["colors"]["white_color"])
 
         self.text_x = self.score_rect.x + (self.score_rect.w - self.text_surface.get_width()) // 2
         self.text_y = self.score_rect.y + (self.score_rect.h - self.text_surface.get_height()) // 2
@@ -121,13 +133,23 @@ class GameView:
         self.current_block = random.choice(blocks)
 
 
-        self.dragging = False
-        self.block_x = self.block_frame_rect.x + self.block_frame_rect.width // 2
-        self.block_y = self.block_frame_rect.y + self.block_frame_rect.height // 2
+
+
+        block_width = max(dx for dx, dy in self.current_block) + 1
+        block_height = max(dy for dx, dy in self.current_block) + 1
+
+        self.block_x = self.block_frame_rect.x + (
+            self.block_frame_rect.width - block_width * self.cell_size) // 2
+
+        self.block_y = self.block_frame_rect.y + (
+            self.block_frame_rect.height - block_height * self.cell_size) // 2
 
         self.start_block_x = self.block_x
         self.start_block_y = self.block_y
 
+        if self.placed_blocks and not self.check_if_block_can_fit():
+            self.game_over = True
+            self.display.switch_leaderboard_view()
 
     def clear_full_row_or_column(self):
         """Tyhjentää rivin tai sarakkeen, joka on täynnä.
@@ -158,7 +180,8 @@ class GameView:
         cleared_rows_or_columns = len(full_row)+len(full_col)
         self.score_value += cleared_rows_or_columns
 
-        self.text_surface = self.input_font.render(str(self.score_value), True, self.white_color)
+        self.text_surface = self.ui["fonts"]["input_font"].render(
+            str(self.score_value), True, self.ui["colors"]["white_color"])
 
 ### generoitu koodi
 
@@ -179,59 +202,109 @@ class GameView:
 ### generoitu koodi loppuu
 
 
+    def check_if_block_can_fit(self):
+        """Tarkistaa, mahtuuko palikka ruudukkoon.
+        Tarkistaa, onko palikka mahdollista sijoittaa ruudukkoon.
+        """
+
+        for row in range(self.grid_size):
+            for col in range(self.grid_size):
+                valid = True
+                for dx, dy in self.current_block:
+                    cx = col + dx
+                    cy = row + dy
+                    if cx < 0 or cx >= self.grid_size or cy < 0 or cy >= self.grid_size:
+                        valid = False
+                        break
+                    if self.grid[cy][cx] == 1:
+                        valid = False
+                        break
+                if valid:
+                    return True
+        return False
+
+
+
+
     def draw(self):
-        self.screen.fill(self.black_color)
+        """Piirtää pelinäkymän.
+        Piirtää ruudukon, palikat ja pistetilanteen.
+        """
+
+
+        self.screen.fill(self.ui["colors"]["black_color"])
         self.screen.blit(self.score_text, self.score_text_position)
 
-        pygame.draw.rect(self.screen, self.white_color, self.score_rect, 2)
+        pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], self.score_rect, 2)
 
 
         self.screen.blit(self.text_surface, (self.text_x, self.text_y))
 
+        if self.game_over:
+            font = self.ui["fonts"]["general_font"].render(
+                "GAME OVER", True, self.ui["colors"]["white_color"])
+
+
+            font_rect = font.get_rect(center=(self.display_size[0] // 2, self.display_size[1] // 2))
+            self.screen.blit(font, font_rect)
+            return
+
         self.draw_grid()
         self.draw_placed_blocks()
 
-        pygame.draw.rect(self.screen, self.white_color, self.block_frame_rect, 2)
+        pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], self.block_frame_rect, 2)
 
         self.draw_block()
 
 
 
 
+
     def draw_grid(self):
+        """Piirtää pelialustana toimivan ruudukon.
+        """
+
+
         for row in range(9):
             for col in range(9):
                 x = (self.display_size[0] // 2 - self.grid_side_length // 2) + col *(self.cell_size)
                 y = (self.display_size[0] // 2 - self.grid_side_length // 2) + row *(self.cell_size)
                 rect = pygame.Rect(x, y, self.cell_size, self.cell_size)
-                pygame.draw.rect(self.screen, self.white_color, rect, 2)
+                pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], rect, 2)
 
     def draw_block(self):
+        """Piirtää palikan.
+        """
+
+
         for dx, dy in self.current_block:
             x = self.block_x +dx* self.cell_size
             y = self.block_y + dy * self.cell_size
 
             rect = pygame.Rect(x,y, self.cell_size, self.cell_size)
-            pygame.draw.rect(self.screen, self.white_color, rect)
-            pygame.draw.rect(self.screen, self.white_color, rect, 2)
+            pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], rect)
+            pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], rect, 2)
 
 
 
     def draw_placed_blocks(self):
+        """Piirtää sijoitetut palikat.
+        """
+
         for block in self.placed_blocks:
             block_shape, block_x, block_y = block
             for dx, dy in block_shape:
                 x = self.start_grid_x + (block_x + dx) * self.cell_size
                 y = self.start_grid_y + (block_y + dy) * self.cell_size
                 rect = pygame.Rect(x,y, self.cell_size, self.cell_size)
-                pygame.draw.rect(self.screen, self.white_color, rect)
-                pygame.draw.rect(self.screen, self.white_color, rect, 2)
+                pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], rect)
+                pygame.draw.rect(self.screen, self.ui["colors"]["white_color"], rect, 2)
 
 
 ### osittain generoitu koodi alkaa
     def handle_event(self, event):
         """Käsittelee pelinäkymän tapahtumat.
-        Mahdollistaa hiiren painallukset ja liikkeet, jonka avulla pelaaja voi raahata palikkoja ruudukkoon.
+        Mahdollistaa hiiren painallukset ja liikkeet, jonka avulla pelaaja voi raahata palikkoja.
 
         Args:
             event: Objekti, joka käsittää tiedon hiiren toiminnasta.
@@ -267,6 +340,8 @@ class GameView:
                 lock_x = (self.block_x - self.start_grid_x + self.cell_size // 2) // self.cell_size
                 lock_y = (self.block_y - self.start_grid_y + self.cell_size // 2) // self.cell_size
 
+
+
 ### Generoitu koodi alkaa
                 valid = True
                 for dx, dy in self.current_block:
@@ -275,7 +350,6 @@ class GameView:
                     if cx < 0 or cx >= self.grid_size or cy < 0 or cy >= self.grid_size:
                         valid = False
                         break
-
 
                 if valid:
                     for block in self.placed_blocks:

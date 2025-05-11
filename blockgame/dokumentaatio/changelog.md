@@ -42,3 +42,11 @@
 - Refaktorointia.
 
 - Alustava käyttöohje.
+
+## LOPULLINEN PALAUTUS
+
+- Peli loppuu kun seuraava palikka ei enään mahdu taulukkoon.
+
+- Pistetaulukko ilmestyy häviämisen jälkeen.
+
+- Pelaajalla mahdollisuus aloittaa uusi peli tai vaihtaa pelaajaa.
