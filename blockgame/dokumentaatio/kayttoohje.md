@@ -10,7 +10,7 @@ poetry install
 
 Käynnistä komennolla:
 
-´´´bash
+```bash
 poetry run invoke start
 ```
 
