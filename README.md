@@ -7,6 +7,8 @@ Alustava idea on tehdä *peli*
 
 ## Dokumentaatio
 
+- [Loppupalautus](https://github.com/juhok00/ot-harjoitustyo/releases/tag/loppupalautus)
+
 - [Käyttöohje](./blockgame/dokumentaatio/kayttoohje.md)
 - [Työaikakirjanpito](./blockgame/dokumentaatio/tuntikirjanpito.md)
 - [Vaatimusmäärittely](./blockgame/dokumentaatio/vaatimusmaarittely.md)
